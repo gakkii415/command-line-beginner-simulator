@@ -1,3 +1,158 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>コマンドライン初心者シミュレータ</title><style>
-*{box-sizing:border-box}:root{color-scheme:dark;--bg:#050506;--surface:#101013;--surface2:#151519;--line:#ffffff12;--line2:#ffffff1c;--text:#f5f5f6;--muted:#8b8b94;--accent:#ff5b73;--orange:#ff8b62;--green:#74dfa8;--red:#ff8d99;--mono:ui-monospace,SFMono-Regular,Menlo,monospace}html{background:var(--bg)}body{margin:0;min-height:100vh;background:radial-gradient(900px 420px at 52% -260px,#a3263d2d,transparent 72%),var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:calc(18px + env(safe-area-inset-top)) 18px calc(28px + env(safe-area-inset-bottom))}button,input{font:inherit}.app{width:min(100%,1180px);margin:auto}.head{height:44px;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.brand{display:flex;align-items:center;gap:10px;min-width:0}.mark{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--orange));font:700 12px var(--mono);box-shadow:0 8px 28px #ff536b22}.title{font-size:15px;font-weight:650;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ver{font:10px var(--mono);color:#666771}.intro{display:flex;gap:8px;align-items:center;margin-bottom:14px;color:#8f9098;font-size:11.5px}.intro b{color:#b9bac0;font-weight:600}.dot{width:6px;height:6px;flex:0 0 auto;border-radius:50%;background:var(--green);box-shadow:0 0 10px #70e6aa55}.workspace{display:grid;grid-template-columns:340px minmax(0,1fr);gap:14px;align-items:start}.panel,.terminal{background:linear-gradient(180deg,#151519,#101013);border:1px solid var(--line);border-radius:16px;box-shadow:0 20px 60px #0007,0 1px 0 #ffffff08 inset}.lesson{padding:18px}.top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.eyebrow,.label{font-size:9px;font-weight:650;letter-spacing:.12em;text-transform:uppercase;color:#6d6e77}.ltitle{font-size:19px;font-weight:650;line-height:1.3;letter-spacing:-.02em;margin-top:6px}.progress{font:10px var(--mono);color:#777983;white-space:nowrap;padding-top:2px}.track{height:2px;background:#ffffff0c;margin:16px 0 18px;overflow:hidden}.barprog{height:100%;background:linear-gradient(90deg,var(--accent),var(--orange))}.label{margin:15px 0 6px}.explain{font-size:12px;line-height:1.7;color:#b5b6bd}.hint{font:12px/1.6 var(--mono);color:#f2f2f3;background:#09090b;border:1px solid var(--line);border-radius:10px;padding:12px}.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:11px}.chips:empty{display:none}.chips:before{content:"入力候補";display:block;flex-basis:100%;font-size:9px;color:#666872;letter-spacing:.08em}.chips button,.actions button,.tools button{border:1px solid var(--line2);background:#16161a;color:#c9cad0;border-radius:8px;transition:.15s ease}.chips button:hover,.actions button:hover,.tools button:hover{background:#1d1d22;border-color:#ffffff2b}.chips button{padding:7px 9px;font:11px var(--mono)}.actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px;padding-top:14px;border-top:1px solid #ffffff09}.actions button{padding:7px 9px;background:transparent;font-size:10px}.restart{color:#c98d93!important}.terminal{overflow:hidden;background:#080809}.tbar{height:46px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 10px 0 14px;background:#121216;border-bottom:1px solid var(--line)}.tlabel{font-size:10.5px;color:#c6c7cc;display:flex;align-items:center;gap:8px}.dots{display:flex;gap:5px}.dots i{width:7px;height:7px;border-radius:50%;background:#d95462}.dots i:nth-child(2){background:#cfa253}.dots i:nth-child(3){background:#61b978}.safe{color:#666872}.tools{display:flex;gap:5px}.tools button{height:30px;padding:0 9px;font-size:9.5px}.screen{min-height:clamp(420px,58vh,650px);max-height:68vh;overflow:auto;padding:18px 20px;background:#080809;color:#d3d4d8;font:12px/1.68 var(--mono);white-space:pre-wrap;overflow-wrap:anywhere}.screen .ok,.screen .danger{margin:6px 0;padding:5px 8px;border-left:2px solid}.screen .ok{color:#93e5b7;border-color:#5bd593}.screen .danger{color:#ff9da6;border-color:#e85c6a}.inputrow{display:flex;min-height:52px;border-top:1px solid var(--line);background:#0b0b0d}.prompt{display:flex;align-items:center;padding-left:18px;color:var(--accent);font:600 12px var(--mono)}input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:white;padding:12px 10px;font:12px var(--mono);caret-color:var(--accent)}input::placeholder{color:#4f5058}.run{border:0;border-left:1px solid var(--line);background:#ededf0;color:#101014;padding:0 20px;font-size:11px;font-weight:700}.run:hover{background:white}.ref{margin-top:10px;overflow:hidden;border-radius:12px;background:#0d0d10}.ref summary{padding:10px 12px;cursor:pointer;list-style:none;display:flex;gap:8px;align-items:center;font-size:10.5px;color:#aaaab1}.ref summary:before{content:"⌘";font:11px var(--mono);color:#686a73}.ref summary:after{content:"＋";margin-left:auto;color:#61636c}.ref[open] summary:after{content:"−"}.refbody{border-top:1px solid #ffffff08;padding:10px 12px 12px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px 14px}.cmd{display:grid;grid-template-columns:48px 1fr;gap:7px;font-size:10px;color:#777983}.cmd code{color:#d6d7da;font:600 10px var(--mono)}button:disabled{opacity:.28}button:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid #ff667a;outline-offset:2px}.muted{color:#777b85}.ok{color:var(--green)}.danger{color:var(--red)}code{font-family:var(--mono)}@media(max-width:760px){body{padding:calc(10px + env(safe-area-inset-top)) 10px calc(18px + env(safe-area-inset-bottom));background:radial-gradient(520px 240px at 50% -170px,#a3263d22,transparent 75%),var(--bg)}.app{max-width:680px}.head{height:38px;margin-bottom:5px}.mark{width:27px;height:27px;border-radius:8px}.title{font-size:14px}.intro{font-size:10.5px;line-height:1.45;margin:0 2px 10px}.workspace{grid-template-columns:1fr;gap:8px}.lesson{padding:13px;border-radius:13px}.ltitle{font-size:17px}.track{margin:12px 0 13px}.label{margin:11px 0 5px}.explain{font-size:11.5px;line-height:1.55}.hint{padding:9px 10px;font-size:11.5px}.chips{margin-top:8px}.chips button{min-height:34px}.actions{margin-top:11px;padding-top:10px}.actions button{min-height:34px}.terminal{border-radius:13px}.tbar{height:auto;min-height:42px;padding:7px 9px}.tools{margin-left:auto}.tools button{width:auto;min-width:0;height:30px;padding:0 8px}.safe{display:none}.screen{min-height:250px;max-height:38vh;padding:12px 13px;font-size:11.5px}.inputrow{min-height:48px}.prompt{padding-left:13px}input{font-size:16px;padding:10px 8px}.run{padding:0 14px}.ref{margin-top:8px;border-radius:12px}.ref summary{padding:10px 12px}.refbody{padding:9px 12px 11px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 10px}.cmd{font-size:9.5px;grid-template-columns:44px 1fr}.cmd code{font-size:9.5px}}@media(max-width:430px){.tools button{font-size:0;width:34px}.tools button:after{font-size:12px}.tools button:nth-child(1):after{content:"⇥"}.tools button:nth-child(2):after{content:"↑"}.tools button:nth-child(3):after{content:"↓"}.grid{grid-template-columns:1fr 1fr}.intro span:last-child{display:block}}
-</style></head><body><div class="app"><header class="head"><div class="brand"><div class="mark">&gt;_</div><div class="title">コマンドライン初心者シミュレータ</div></div><div class="ver">v9</div></header><div class="intro"><span class="dot"></span><span><b>安全な仮想環境</b> — 本物のPCには触れません。進捗はこのブラウザに自動保存されます。</span></div><main class="workspace"><section class="panel lesson"><div class="top"><div><div class="eyebrow">Lesson</div><div class="ltitle" id="lessonTitle"></div></div><div class="progress" id="progress"></div></div><div class="track" id="progressTrack" role="progressbar" aria-valuemin="0" aria-valuemax="19" aria-valuenow="0"><div class="barprog" id="progressBar"></div></div><div class="label">ポイント</div><div class="explain" id="explain"></div><div class="label">今やること</div><div class="hint" id="hint"></div><div class="chips" id="chips"></div><div class="actions"><button id="retryStep">このステップをやり直す</button><button class="restart" id="restartCourse">最初からやり直す</button></div></section><section><div class="terminal"><div class="tbar"><div class="tlabel"><span class="dots"><i></i><i></i><i></i></span>練習用ターミナル <span class="safe">/ safe shell</span></div><div class="tools"><button id="completeInput">Tab補完</button><button id="historyPrev" disabled>↑ 履歴</button><button id="historyNext" disabled>↓ 履歴</button></div></div><div class="screen" id="screen" role="log"></div><div class="inputrow"><div class="prompt">$</div><input id="input" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="コマンドを入力"><button class="run" id="run">実行</button></div></div><details class="panel ref"><summary>使えるコマンド</summary><div class="refbody"><div class="grid" id="commandGrid"></div></div></details></section></main></div><script>(()=>{const K='command-line-beginner-simulator-progress',C=['pwd','ls','cd','mkdir','touch','cat','echo','cp','mv','rm','grep','clear','help'],L=[['今いる場所を知る','pwd は今いるフォルダを表示します。','pwd',['pwd'],c=>c==='pwd'],['中身を見る','ls は今いるフォルダの中身を一覧表示します。','ls',['ls'],c=>c==='ls'],['フォルダを作る','mkdir はフォルダを作ります。','mkdir projects',['mkdir projects'],c=>c==='mkdir projects'],['フォルダへ移動する','cd はフォルダを移動します。','cd projects',['cd projects','pwd'],c=>c==='cd projects'],['ファイルを作る','touch は空のファイルを作ります。','touch note.txt',['touch note.txt','ls'],c=>c==='touch note.txt'],['ファイルへ文字を書く','echo の出力は > でファイルへ保存できます。','echo こんにちは > note.txt',['echo こんにちは > note.txt'],c=>/^echo\s+こんにちは\s*>\s*note\.txt$/.test(c)],['ファイルを読む','cat はファイルの中身を表示します。','cat note.txt',['cat note.txt'],c=>c==='cat note.txt'],['コピーする','cp はファイルを複製します。','cp note.txt backup.txt',['cp note.txt backup.txt','ls'],c=>c==='cp note.txt backup.txt'],['名前を変える','mv は移動・名前変更に使います。','mv backup.txt memo.txt',['mv backup.txt memo.txt','ls'],c=>c==='mv backup.txt memo.txt'],['削除する','rm はファイルを削除します。実機では注意が必要です。','rm memo.txt',['rm memo.txt','ls'],c=>c==='rm memo.txt'],['ひとつ上へ戻る','.. はひとつ上のフォルダです。','cd ..',['cd ..','pwd'],c=>c==='cd ..'],['隠しファイルを見る','-a は隠しファイルも表示するオプションです。','ls -a',['ls -a'],c=>c==='ls -a'],['パスを理解する','/ から始まるのが絶対パス、現在地基準が相対パス、~ はホームです。','cd /home/user/projects',['cd /home/user/projects','pwd'],c=>c==='cd /home/user/projects'],['ヘルプで調べる','多くのコマンドは --help で使い方を確認できます。','ls --help',['ls --help'],c=>c==='ls --help'],['スペースを含む名前','スペースを含む名前は引用符で囲みます。','touch "my notes.txt"',['touch "my notes.txt"','ls'],c=>/^touch\s+(["'])my notes\.txt\1$/.test(c)],['追記する','> は上書き、>> は末尾への追記です。','echo 追加メモ >> note.txt',['echo 追加メモ >> note.txt','cat note.txt'],c=>/^echo\s+追加メモ\s*>>\s*note\.txt$/.test(c)],['文字を探す','grep は指定した文字を含む行を探します。','grep 追加 note.txt',['grep 追加 note.txt'],c=>c==='grep 追加 note.txt'],['コマンドをつなぐ','| は左の出力を右のコマンドへ渡します。','cat note.txt | grep こんにちは',['cat note.txt | grep こんにちは'],c=>/^cat\s+note\.txt\s*\|\s*grep\s+こんにちは$/.test(c)],['総合演習','最後は入力候補なしで基本操作を組み合わせます。','projects の中に practice を作って移動し、result.txt に「できた」と保存。cat result.txt で確認してください。',[],c=>c==='cat result.txt'&&cwd()==='/home/user/projects/practice'&&node(['home','user','projects','practice'])?.children?.['result.txt']?.content==='できた']];const desc={pwd:'今いる場所',ls:'中身を見る',cd:'移動',mkdir:'フォルダ作成',touch:'ファイル作成',cat:'中身表示',echo:'文字を出す・書く',cp:'コピー',mv:'移動・名前変更',rm:'削除',grep:'文字検索',clear:'画面を消す',help:'ヘルプ'};commandGrid.innerHTML=C.map(x=>`<div class="cmd"><code>${x}</code><span>${desc[x]}</span></div>`).join('');const mk=()=>({type:'dir',children:{home:{type:'dir',children:{user:{type:'dir',children:{welcome:{type:'file',content:'コマンドライン練習へようこそ！'},'.profile':{type:'file',content:'これは隠し設定ファイルの例です'}}}}}}});let fs=mk(),path=['home','user'],lesson=0,snap=null,h=[],hi=0;const $=id=>document.getElementById(id),screen=$('screen'),input=$('input'),hp=$('historyPrev'),hn=$('historyNext');const node=p=>{let n=fs;for(const s of p){if(!n.children?.[s])return null;n=n.children[s]}return n},cwd=()=>'/'+path.join('/'),parts=(t,b=path)=>{t=String(t??'');let p;t==='~'?(p=['home','user'],t=''):t.startsWith('~/')?(p=['home','user'],t=t.slice(2)):t.startsWith('/')?(p=[],t=t.slice(1)):p=[...b];for(const x of t.split('/'))if(x&&x!=='.')x==='..'?p.pop():p.push(x);return p},entry=t=>node(parts(t)),ti=t=>{let p=parts(t);return{p,name:p.at(-1),parent:node(p.slice(0,-1)),n:node(p)}};const clone=()=>({fs:JSON.parse(JSON.stringify(fs)),path:[...path]}),save=()=>localStorage.setItem(K,JSON.stringify({lesson,fs,path,snap})),write=(s,c='')=>{let d=document.createElement('div');d.textContent=s;d.className=c;screen.append(d);screen.scrollTop=screen.scrollHeight},split=s=>s.match(/"[^"]*"|'[^']*'|\S+/g)?.map(x=>x.replace(/^['"]|['"]$/g,''))||[];function exec(raw,stdin=null){let a=split(raw),n=a[0],o=[],say=(x,c='')=>o.push({x,c});if(!n)return o;if(n==='pwd')say(cwd());else if(n==='ls'){let d=entry(a.find((x,i)=>i&& !x.startsWith('-'))||'.');d?.type==='dir'?say(Object.keys(d.children||{}).filter(x=>a.includes('-a')||!x.startsWith('.')).join('  ')||'(空です)'):say('ls: 場所がありません','danger')}else if(n==='cd'){let p=a[1]?parts(a[1]):['home','user'];node(p)?.type==='dir'?path=p:say('cd: フォルダがありません','danger')}else if(n==='mkdir'){let t=ti(a[1]);t.parent&&!t.n?t.parent.children[t.name]={type:'dir',children:{}}:say('mkdir: 作れません','danger')}else if(n==='touch'){let t=ti(a[1]);t.parent&&!t.n?t.parent.children[t.name]={type:'file',content:''}:say('touch: 作れません','danger')}else if(n==='cat'){let f=entry(a[1]);f?.type==='file'?say(f.content):say('cat: ファイルがありません','danger')}else if(n==='echo')say(a.slice(1).join(' '));else if(n==='cp'){let s=entry(a[1]),t=ti(a[2]);s?.type==='file'&&t.parent?t.parent.children[t.name]={type:'file',content:s.content}:say('cp: 確認してください','danger')}else if(n==='mv'){let s=ti(a[1]),t=ti(a[2]);if(s.n&&s.parent&&t.parent){t.parent.children[t.name]=s.n;delete s.parent.children[s.name]}else say('mv: 確認してください','danger')}else if(n==='rm'){let t=ti(a[1]);t.n?.type==='file'?delete t.parent.children[t.name]:say('rm: ファイルがありません','danger')}else if(n==='grep'){let src=a[2]?entry(a[2])?.content:stdin;if(src==null)say('grep: 入力がありません','danger');else{let f=String(src).split('\n').filter(x=>x.includes(a[1]||''));if(f.length)say(f.join('\n'))}}else if(n==='clear')screen.innerHTML='';else if(n==='help')say(C.join('  ')+'\n↑↓ 履歴 / Tab 補完 / 相対・絶対パス・~ / パイプに対応');else if(a[1]==='--help')say(`${n}: このシミュレータで ${n} の基本的な使い方を練習できます`);else say(`${n}: コマンドが見つかりません`,'danger');return o}function run(v){let c=v.trim();if(!c)return;h.push(c);hi=h.length;write('$ '+c);let m=c.match(/^echo\s+(.+?)\s*(>>|>)\s*(.+)$/),ok=true;if(m){let t=ti(split(m[3])[0]),txt=m[1].replace(/^(["'])(.*)\1$/,'$2');if(!t.parent)ok=false;else if(m[2]==='>>'&&t.n?.type==='file')t.n.content+=(t.n.content?'\n':'')+txt;else t.parent.children[t.name]={type:'file',content:txt}}else{let pp=c.split('|').map(x=>x.trim()),stdin=null,last=[];for(let p of pp){last=exec(p,stdin);if(last.some(x=>x.c==='danger')){ok=false;break}stdin=last.map(x=>x.x).join('\n')}last.forEach(x=>write(x.x,x.c))}if(ok&&L[lesson]?.[4](c)){write('✓ クリア','ok');lesson++;snap=clone();render()}save();hist()}function render(){let l=L[lesson],pg=$('progressTrack');pg.setAttribute('aria-valuemax',L.length);if(!l){$('lessonTitle').textContent='基本編クリア';$('progress').textContent=`${L.length} / ${L.length}`;$('progressBar').style.width='100%';$('explain').textContent='基本操作を組み合わせるところまで完了しました。';$('hint').textContent='自由に試せます。';$('chips').innerHTML='';return}$('lessonTitle').textContent=`${lesson+1}. ${l[0]}`;$('progress').textContent=`${lesson+1} / ${L.length}`;$('progressBar').style.width=`${lesson/L.length*100}%`;$('explain').textContent=l[1];$('hint').textContent=l[2];let ch=$('chips');ch.innerHTML='';l[3].forEach(c=>{let b=document.createElement('button');b.textContent=c;b.onclick=()=>{input.value=c;input.focus()};ch.append(b)})}function hist(){hp.disabled=!h.length||hi<=0;hn.disabled=!h.length||hi>=h.length}function hv(d){hi=Math.max(0,Math.min(h.length,hi+d));input.value=hi===h.length?'':h[hi];hist();input.focus()}$('run').onclick=()=>{run(input.value);input.value='';input.focus()};input.onkeydown=e=>{if(e.key==='Enter'){run(input.value);input.value=''}else if(e.key==='ArrowUp'){e.preventDefault();hv(-1)}else if(e.key==='ArrowDown'){e.preventDefault();hv(1)}};hp.onclick=()=>hv(-1);hn.onclick=()=>hv(1);$('completeInput').onclick=()=>{let q=input.value.trim();let a=C.filter(x=>x.startsWith(q));if(a.length===1)input.value=a[0];input.focus()};$('retryStep').onclick=()=>{if(snap){fs=JSON.parse(JSON.stringify(snap.fs));path=[...snap.path];screen.innerHTML='';write('このステップの開始状態に戻しました。','muted');save()}};$('restartCourse').onclick=()=>{if(confirm('最初からやり直しますか？')){fs=mk();path=['home','user'];lesson=0;snap=clone();screen.innerHTML='';localStorage.removeItem(K);save();render()}};try{let s=JSON.parse(localStorage.getItem(K));if(s){lesson=s.lesson||0;fs=s.fs||fs;path=s.path||path;snap=s.snap||clone()}}catch{}if(!snap)snap=clone();write(lesson?`保存されていたステップ ${lesson+1} から再開します。`:'最初の課題を実行してください。');render();hist();save()})();</script></body></html>
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="実際のファイルを変更せず、ブラウザでコマンドラインの基本を練習できる初心者向けシミュレータです。"
+    />
+    <meta name="theme-color" content="#08090b" />
+    <title>コマンドライン初心者シミュレータ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Noto+Sans+JP:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand" aria-label="コマンドライン初心者シミュレータ">
+          <div class="brand-mark" aria-hidden="true"><span>&gt;</span><i>_</i></div>
+          <div class="brand-copy">
+            <span class="brand-name">Command Line</span>
+            <span class="brand-description">初心者シミュレータ</span>
+          </div>
+        </div>
+
+        <div class="topbar-status">
+          <div class="environment-status">
+            <span class="status-light" aria-hidden="true"></span>
+            <span>安全な仮想環境</span>
+          </div>
+          <span class="lesson-count">19 lessons</span>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <aside class="lesson-pane" aria-labelledby="lessonTitle">
+          <div class="lesson-path-row">
+            <span class="section-kicker">学習パス</span>
+            <code id="lessonPath">~/learn/01-pwd</code>
+          </div>
+
+          <div class="lesson-progress-row">
+            <div class="step-count">
+              <span id="currentStep">01</span><span aria-hidden="true"> / </span><span id="totalSteps">19</span>
+            </div>
+            <div
+              class="progress-track"
+              id="progressTrack"
+              role="progressbar"
+              aria-label="コース進捗"
+              aria-valuemin="0"
+              aria-valuemax="19"
+              aria-valuenow="1"
+            >
+              <div class="progress-value" id="progressBar"></div>
+            </div>
+          </div>
+
+          <div class="lesson-rail" id="lessonRail" aria-hidden="true"></div>
+
+          <div class="lesson-content">
+            <div class="lesson-heading">
+              <span class="section-kicker">現在のレッスン</span>
+              <h1 id="lessonTitle"></h1>
+            </div>
+
+            <section class="lesson-section" aria-labelledby="pointLabel">
+              <h2 class="section-label" id="pointLabel">ポイント</h2>
+              <p class="lesson-explanation" id="explain"></p>
+            </section>
+
+            <section class="lesson-section" aria-labelledby="taskLabel">
+              <h2 class="section-label" id="taskLabel">今やること</h2>
+              <div class="task-command">
+                <span class="task-prompt" aria-hidden="true">$</span>
+                <code id="hint"></code>
+              </div>
+            </section>
+
+            <div class="suggestions" id="chips" aria-label="入力候補"></div>
+          </div>
+
+          <div class="lesson-actions">
+            <button class="quiet-button" id="retryStep" type="button">
+              <svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3.3 5.2A5.5 5.5 0 1 1 2.7 9M3.3 5.2V1.8M3.3 5.2h3.4" /></svg>
+              このレッスンをリセット
+            </button>
+            <button class="quiet-button is-danger" id="restartCourse" type="button">
+              最初からやり直す
+            </button>
+          </div>
+        </aside>
+
+        <section class="console-pane" aria-label="練習用ターミナル">
+          <div class="console-titlebar">
+            <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="console-identity">
+              <span>practice — shell</span>
+              <code id="terminalPath">~</code>
+            </div>
+            <div class="sandbox-badge">
+              <svg aria-hidden="true" viewBox="0 0 16 16"><path d="M8 1.8 13 4.2v3.6c0 3.1-2 5.4-5 6.4-3-1-5-3.3-5-6.4V4.2L8 1.8Z" /><path d="m5.8 8 1.4 1.4 3-3.1" /></svg>
+              <span>Sandbox</span>
+            </div>
+          </div>
+
+          <div class="terminal-screen" id="screen" role="log" aria-live="polite" aria-label="コマンドの実行結果"></div>
+
+          <form class="command-form" id="commandForm">
+            <label class="sr-only" for="input">コマンドを入力</label>
+            <div class="live-prompt" aria-hidden="true">
+              <span class="prompt-user">guest</span><span class="prompt-separator">:</span><span class="prompt-path" id="promptPath">~</span><span class="prompt-symbol">$</span>
+            </div>
+            <input
+              id="input"
+              autocomplete="off"
+              autocapitalize="none"
+              autocorrect="off"
+              spellcheck="false"
+              enterkeyhint="go"
+              placeholder="コマンドを入力…"
+            />
+            <button class="run-button" id="run" type="submit">
+              <span>実行</span>
+              <kbd>Enter</kbd>
+            </button>
+          </form>
+
+          <div class="console-toolbar" aria-label="入力補助">
+            <div class="tool-group">
+              <button class="tool-button" id="completeInput" type="button"><kbd>Tab</kbd><span>補完</span></button>
+              <button class="tool-button" id="historyPrev" type="button" disabled><kbd>↑</kbd><span>前の履歴</span></button>
+              <button class="tool-button" id="historyNext" type="button" disabled><kbd>↓</kbd><span>次の履歴</span></button>
+            </div>
+            <span class="autosave-note"><i aria-hidden="true"></i>進捗は自動保存</span>
+          </div>
+
+          <details class="command-reference">
+            <summary>
+              <span class="summary-title"><span aria-hidden="true">⌘</span> 使えるコマンド</span>
+              <span class="summary-meta">13 commands</span>
+              <svg aria-hidden="true" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4" /></svg>
+            </summary>
+            <div class="command-grid" id="commandGrid"></div>
+          </details>
+        </section>
+      </main>
+    </div>
+
+    <noscript>このシミュレータを利用するにはJavaScriptを有効にしてください。</noscript>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
