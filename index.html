@@ -33,7 +33,7 @@ const lessons=[
 {title:'2. 中身を見る',explain:'ls は今いるフォルダの中身を一覧表示します。Finderでフォルダを開く感覚に近いです。',hint:'ls を実行してみましょう。',check:c=>c.trim()==='ls',chips:['ls']},
 {title:'3. フォルダを作る',explain:'mkdir は make directory。ここでは projects というフォルダを作ります。',hint:'mkdir projects を実行してください。',check:c=>c.trim()==='mkdir projects',chips:['mkdir projects']},
 {title:'4. フォルダへ移動する',explain:'cd は change directory。projects の中へ移動します。',hint:'cd projects を実行してください。',check:c=>c.trim()==='cd projects',chips:['cd projects','pwd']},
-{title:'5. ファイルを作る',explain:'touch は空のファイルを作れます。まず note.txt を作ります。',hint:'touch note.txt を実行してください。',check:c=>c.trim()==='touch note.txt',chips:['touch note.txt']},
+{title:'5. ファイルを作る',explain:'touch は空のファイルを作れます。まず note.txt を作ります。',hint:'touch note.txt を実行してください。',check:c=>c.trim()==='touch note.txt',chips:['touch note.txt','ls']},
 {title:'6. ファイルへ文字を書く',explain:'echo は文字を出力するコマンドです。> を使うと、その出力でファイルの中身を置き換えられます。',hint:'echo こんにちは > note.txt を実行してください。',check:c=>/^echo\s+こんにちは\s*>\s*note\.txt$/.test(c.trim()),chips:['echo こんにちは > note.txt']},
 {title:'7. ファイルを読む',explain:'cat はテキストファイルの中身を表示します。',hint:'cat note.txt で「こんにちは」が出れば成功です。',check:c=>c.trim()==='cat note.txt',chips:['cat note.txt']},
 {title:'8. コピーする',explain:'cp は copy。note.txt を backup.txt という名前で複製します。',hint:'cp note.txt backup.txt を実行してください。',check:c=>c.trim()==='cp note.txt backup.txt',chips:['cp note.txt backup.txt','ls']},
